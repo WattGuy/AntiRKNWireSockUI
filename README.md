@@ -5,7 +5,9 @@ WireSockUI is an innovative user interface for the [WireSock VPN Client](https:/
 ## AntiRKN
 
 Для того чтобы воспользоваться обходом блокировки выберите тоннель и нажмите кнопку "ANTIRKN", тоннель автоматически запустится и будет работать.
-|
+
+------
+
 To use the bypass blocking, select the tunnel and press the "ANTIRKN" button, the tunnel will automatically start and work.
 
 ## Special Acknowledgements
