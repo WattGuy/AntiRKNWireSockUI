@@ -5,7 +5,12 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using WireSockUI.Config;
@@ -13,6 +18,7 @@ using WireSockUI.Extensions;
 using WireSockUI.Native;
 using WireSockUI.Properties;
 using static WireSockUI.Native.WireguardBoosterExports;
+using System.Threading.Tasks;
 
 namespace WireSockUI.Forms
 {
@@ -739,6 +745,7 @@ namespace WireSockUI.Forms
 
             mniDeleteTunnel.Enabled = e.IsSelected;
             btnEdit.Enabled = e.IsSelected;
+            btnAntiRKN.Enabled = e.IsSelected;
             return;
 
             void AddRow(TableLayoutPanel container, string name, string key, string value, bool isOptional = false,
@@ -903,5 +910,95 @@ namespace WireSockUI.Forms
         }
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var profile = lstProfiles.SelectedItems[0].Text;
+            var profilePath = Profile.GetProfilePath(profile);
+
+            if (_currentState != ConnectionState.Disconnected)
+                UpdateState(ConnectionState.Disconnected, notify: false);
+
+            IniFile ini = new IniFile(profilePath);
+
+            var ipNPort = ini.Read("Endpoint", Section: "Peer").Split(':');
+
+            var WGIp = ipNPort[0];
+            var WGPort = ipNPort[1];
+            var endPoint = new IPEndPoint(IPAddress.Parse(WGIp), int.Parse(WGPort));
+
+            var newPort = GetRandomInclusive(56100, 56500);
+            ini.Write("ListenPort", "" + newPort, Section: "Interface");
+
+            asyncAntiRKN(newPort, endPoint, profile);
+        }
+
+        private async void asyncAntiRKN(int newPort, IPEndPoint endPoint, string profile) {
+
+            using (var socket = new UdpClient(newPort))
+            {
+                string message = ":)";
+                byte[] messageBytes = Encoding.ASCII.GetBytes(message);
+                socket.Send(messageBytes, messageBytes.Length, endPoint);
+            }
+
+            await Task.Delay(2000); 
+
+            if (!(_wiresock.Connected && _wiresock.ProfileName == profile))
+            {
+                OnProfileClick(lstProfiles, EventArgs.Empty);
+            }
+        }
+
+        public static int GetRandomInclusive(int minValue, int maxValue)
+        {
+            Random random = new Random();
+            return random.Next(minValue, maxValue + 1);
+        }
     }
+
+    class IniFile
+    {
+        string Path;
+        string EXE = Assembly.GetExecutingAssembly().GetName().Name;
+
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
+
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
+
+        public IniFile(string IniPath = null)
+        {
+            Path = new FileInfo(IniPath ?? EXE + ".ini").FullName;
+        }
+
+        public string Read(string Key, string Section = null)
+        {
+            var RetVal = new StringBuilder(255);
+            GetPrivateProfileString(Section ?? EXE, Key, "", RetVal, 255, Path);
+            return RetVal.ToString();
+        }
+
+        public void Write(string Key, string Value, string Section = null)
+        {
+            WritePrivateProfileString(Section ?? EXE, Key, Value, Path);
+        }
+
+        public void DeleteKey(string Key, string Section = null)
+        {
+            Write(Key, null, Section ?? EXE);
+        }
+
+        public void DeleteSection(string Section = null)
+        {
+            Write(null, null, Section ?? EXE);
+        }
+
+        public bool KeyExists(string Key, string Section = null)
+        {
+            return Read(Key, Section).Length > 0;
+        }
+    }
+
 }

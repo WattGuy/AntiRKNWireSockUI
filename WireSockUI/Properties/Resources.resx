@@ -156,6 +156,9 @@
   <data name="ButtonEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="ButtonAntiRKN" xml:space="preserve">
+    <value>AntiRKN</value>
+  </data>
   <data name="ButtonInactive" xml:space="preserve">
     <value>Activate</value>
   </data>

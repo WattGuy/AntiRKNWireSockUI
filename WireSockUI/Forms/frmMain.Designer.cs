@@ -44,6 +44,7 @@ namespace WireSockUI.Forms
             this.cmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTunnels = new System.Windows.Forms.TabPage();
+            this.btnAntiRKN = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.mnuToolbar = new System.Windows.Forms.ToolStrip();
@@ -98,6 +99,7 @@ namespace WireSockUI.Forms
             // 
             // mnuContext
             // 
+            this.mnuContext.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmiStatus,
             this.cmiAddresses,
@@ -109,14 +111,14 @@ namespace WireSockUI.Forms
             this.cmiExit});
             this.mnuContext.Name = "contextMenuStrip1";
             this.resControls.SetResourceKey(this.mnuContext, null);
-            this.mnuContext.Size = new System.Drawing.Size(211, 126);
+            this.mnuContext.Size = new System.Drawing.Size(246, 160);
             // 
             // cmiStatus
             // 
             this.cmiStatus.Enabled = false;
             this.cmiStatus.Name = "cmiStatus";
             this.resMenu.SetResourceKey(this.cmiStatus, null);
-            this.cmiStatus.Size = new System.Drawing.Size(210, 22);
+            this.cmiStatus.Size = new System.Drawing.Size(245, 24);
             this.cmiStatus.Text = "Status: Inactive";
             // 
             // cmiAddresses
@@ -124,7 +126,7 @@ namespace WireSockUI.Forms
             this.cmiAddresses.Enabled = false;
             this.cmiAddresses.Name = "cmiAddresses";
             this.resMenu.SetResourceKey(this.cmiAddresses, null);
-            this.cmiAddresses.Size = new System.Drawing.Size(210, 22);
+            this.cmiAddresses.Size = new System.Drawing.Size(245, 24);
             this.cmiAddresses.Text = "Addresses:";
             this.cmiAddresses.Visible = false;
             // 
@@ -132,14 +134,14 @@ namespace WireSockUI.Forms
             // 
             this.cmiSepTunnels.Name = "cmiSepTunnels";
             this.resMenu.SetResourceKey(this.cmiSepTunnels, null);
-            this.cmiSepTunnels.Size = new System.Drawing.Size(207, 6);
+            this.cmiSepTunnels.Size = new System.Drawing.Size(242, 6);
             // 
             // cmiDeactivateTunnel
             // 
             this.cmiDeactivateTunnel.Enabled = false;
             this.cmiDeactivateTunnel.Name = "cmiDeactivateTunnel";
             this.resMenu.SetResourceKey(this.cmiDeactivateTunnel, null);
-            this.cmiDeactivateTunnel.Size = new System.Drawing.Size(210, 22);
+            this.cmiDeactivateTunnel.Size = new System.Drawing.Size(245, 24);
             this.cmiDeactivateTunnel.Text = "Deactivate tunnel";
             this.cmiDeactivateTunnel.Click += new System.EventHandler(this.OnDisconnectClick);
             // 
@@ -148,7 +150,7 @@ namespace WireSockUI.Forms
             this.cmiManageTunnels.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.cmiManageTunnels.Name = "cmiManageTunnels";
             this.resMenu.SetResourceKey(this.cmiManageTunnels, null);
-            this.cmiManageTunnels.Size = new System.Drawing.Size(210, 22);
+            this.cmiManageTunnels.Size = new System.Drawing.Size(245, 24);
             this.cmiManageTunnels.Text = "Manage tunnels...";
             this.cmiManageTunnels.Click += new System.EventHandler(this.OnFormShow);
             // 
@@ -156,7 +158,7 @@ namespace WireSockUI.Forms
             // 
             this.cmiOpenTunnel.Name = "cmiOpenTunnel";
             this.resMenu.SetResourceKey(this.cmiOpenTunnel, null);
-            this.cmiOpenTunnel.Size = new System.Drawing.Size(210, 22);
+            this.cmiOpenTunnel.Size = new System.Drawing.Size(245, 24);
             this.cmiOpenTunnel.Text = "Open tunnel(s) from file...";
             this.cmiOpenTunnel.Click += new System.EventHandler(this.OnAddProfileClick);
             // 
@@ -164,13 +166,13 @@ namespace WireSockUI.Forms
             // 
             this.cmiSepBottom.Name = "cmiSepBottom";
             this.resMenu.SetResourceKey(this.cmiSepBottom, null);
-            this.cmiSepBottom.Size = new System.Drawing.Size(207, 6);
+            this.cmiSepBottom.Size = new System.Drawing.Size(242, 6);
             // 
             // cmiExit
             // 
             this.cmiExit.Name = "cmiExit";
             this.resMenu.SetResourceKey(this.cmiExit, null);
-            this.cmiExit.Size = new System.Drawing.Size(210, 22);
+            this.cmiExit.Size = new System.Drawing.Size(245, 24);
             this.cmiExit.Text = "Exit";
             this.cmiExit.Click += new System.EventHandler(this.OnExitClick);
             // 
@@ -180,34 +182,52 @@ namespace WireSockUI.Forms
             this.tabControl.Controls.Add(this.tabPageLog);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.resControls.SetResourceKey(this.tabControl, null);
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(601, 495);
+            this.tabControl.Size = new System.Drawing.Size(801, 609);
             this.tabControl.TabIndex = 12;
             // 
             // tabPageTunnels
             // 
             this.tabPageTunnels.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageTunnels.Controls.Add(this.btnAntiRKN);
             this.tabPageTunnels.Controls.Add(this.btnEdit);
             this.tabPageTunnels.Controls.Add(this.pnlLeft);
             this.tabPageTunnels.Controls.Add(this.pnlRight);
-            this.tabPageTunnels.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTunnels.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTunnels.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageTunnels.Name = "tabPageTunnels";
-            this.tabPageTunnels.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTunnels.Padding = new System.Windows.Forms.Padding(4);
             this.resControls.SetResourceKey(this.tabPageTunnels, "TabPageTunnels");
-            this.tabPageTunnels.Size = new System.Drawing.Size(593, 469);
+            this.tabPageTunnels.Size = new System.Drawing.Size(793, 580);
             this.tabPageTunnels.TabIndex = 0;
             this.tabPageTunnels.Text = "Tunnels";
+            // 
+            // btnAntiRKN
+            // 
+            this.btnAntiRKN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAntiRKN.Enabled = false;
+            this.btnAntiRKN.Location = new System.Drawing.Point(524, 549);
+            this.btnAntiRKN.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAntiRKN.Name = "btnAntiRKN";
+            this.resControls.SetResourceKey(this.btnAntiRKN, "ButtonAntiRKN");
+            this.btnAntiRKN.Size = new System.Drawing.Size(164, 27);
+            this.btnAntiRKN.TabIndex = 19;
+            this.btnAntiRKN.Text = "ANTI RKN";
+            this.btnAntiRKN.UseVisualStyleBackColor = true;
+            this.btnAntiRKN.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(522, 446);
+            this.btnEdit.Location = new System.Drawing.Point(696, 549);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.resControls.SetResourceKey(this.btnEdit, "ButtonEdit");
-            this.btnEdit.Size = new System.Drawing.Size(64, 22);
+            this.btnEdit.Size = new System.Drawing.Size(85, 27);
             this.btnEdit.TabIndex = 16;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -220,9 +240,10 @@ namespace WireSockUI.Forms
             this.pnlLeft.Controls.Add(this.mnuToolbar);
             this.pnlLeft.Controls.Add(this.lstProfiles);
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeft.Name = "pnlLeft";
             this.resControls.SetResourceKey(this.pnlLeft, null);
-            this.pnlLeft.Size = new System.Drawing.Size(177, 473);
+            this.pnlLeft.Size = new System.Drawing.Size(236, 582);
             this.pnlLeft.TabIndex = 18;
             // 
             // mnuToolbar
@@ -237,11 +258,11 @@ namespace WireSockUI.Forms
             this.mniDeleteTunnel,
             this.tbSep2,
             this.mniSettings});
-            this.mnuToolbar.Location = new System.Drawing.Point(0, 448);
+            this.mnuToolbar.Location = new System.Drawing.Point(0, 551);
             this.mnuToolbar.Name = "mnuToolbar";
             this.mnuToolbar.Padding = new System.Windows.Forms.Padding(0);
             this.resControls.SetResourceKey(this.mnuToolbar, null);
-            this.mnuToolbar.Size = new System.Drawing.Size(177, 25);
+            this.mnuToolbar.Size = new System.Drawing.Size(236, 31);
             this.mnuToolbar.TabIndex = 20;
             this.mnuToolbar.Text = "toolStrip1";
             // 
@@ -255,7 +276,7 @@ namespace WireSockUI.Forms
             this.ddmAddTunnel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ddmAddTunnel.Name = "ddmAddTunnel";
             this.resMenu.SetResourceKey(this.ddmAddTunnel, "MenuAddTunnel");
-            this.ddmAddTunnel.Size = new System.Drawing.Size(84, 22);
+            this.ddmAddTunnel.Size = new System.Drawing.Size(104, 28);
             this.ddmAddTunnel.Text = "Add Tunnel";
             this.ddmAddTunnel.ButtonClick += new System.EventHandler(this.OnAddProfileClick);
             // 
@@ -265,7 +286,7 @@ namespace WireSockUI.Forms
             this.mniImportTunnel.Name = "mniImportTunnel";
             this.resMenu.SetResourceKey(this.mniImportTunnel, "MenuImportTunnel");
             this.mniImportTunnel.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mniImportTunnel.Size = new System.Drawing.Size(247, 22);
+            this.mniImportTunnel.Size = new System.Drawing.Size(315, 26);
             this.mniImportTunnel.Text = "Import tunnel from file...";
             this.mniImportTunnel.Click += new System.EventHandler(this.OnAddProfileClick);
             // 
@@ -275,7 +296,7 @@ namespace WireSockUI.Forms
             this.mniNewTunnel.Name = "mniNewTunnel";
             this.resMenu.SetResourceKey(this.mniNewTunnel, "MenuEmptyTunnel");
             this.mniNewTunnel.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mniNewTunnel.Size = new System.Drawing.Size(247, 22);
+            this.mniNewTunnel.Size = new System.Drawing.Size(315, 26);
             this.mniNewTunnel.Text = "Add empty tunnel...";
             this.mniNewTunnel.Click += new System.EventHandler(this.OnNewProfileClick);
             // 
@@ -283,7 +304,7 @@ namespace WireSockUI.Forms
             // 
             this.tbSep1.Name = "tbSep1";
             this.resMenu.SetResourceKey(this.tbSep1, null);
-            this.tbSep1.Size = new System.Drawing.Size(6, 25);
+            this.tbSep1.Size = new System.Drawing.Size(6, 31);
             // 
             // mniDeleteTunnel
             // 
@@ -293,7 +314,7 @@ namespace WireSockUI.Forms
             this.mniDeleteTunnel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mniDeleteTunnel.Name = "mniDeleteTunnel";
             this.resMenu.SetResourceKey(this.mniDeleteTunnel, "MenuDeleteTunnel");
-            this.mniDeleteTunnel.Size = new System.Drawing.Size(23, 22);
+            this.mniDeleteTunnel.Size = new System.Drawing.Size(29, 28);
             this.mniDeleteTunnel.Text = "Delete Tunnel";
             this.mniDeleteTunnel.Click += new System.EventHandler(this.OnDeleteProfileClick);
             // 
@@ -301,7 +322,7 @@ namespace WireSockUI.Forms
             // 
             this.tbSep2.Name = "tbSep2";
             this.resMenu.SetResourceKey(this.tbSep2, null);
-            this.tbSep2.Size = new System.Drawing.Size(6, 25);
+            this.tbSep2.Size = new System.Drawing.Size(6, 31);
             // 
             // mniSettings
             // 
@@ -311,7 +332,7 @@ namespace WireSockUI.Forms
             this.mniSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mniSettings.Name = "mniSettings";
             this.resMenu.SetResourceKey(this.mniSettings, "MenuSettings");
-            this.mniSettings.Size = new System.Drawing.Size(23, 22);
+            this.mniSettings.Size = new System.Drawing.Size(29, 28);
             this.mniSettings.Text = "Settings";
             this.mniSettings.Click += new System.EventHandler(this.OnSettingsClick);
             // 
@@ -330,11 +351,12 @@ namespace WireSockUI.Forms
             this.lstProfiles.HideSelection = false;
             this.lstProfiles.LabelWrap = false;
             this.lstProfiles.Location = new System.Drawing.Point(0, 0);
+            this.lstProfiles.Margin = new System.Windows.Forms.Padding(4);
             this.lstProfiles.MultiSelect = false;
             this.lstProfiles.Name = "lstProfiles";
             this.resControls.SetResourceKey(this.lstProfiles, null);
             this.lstProfiles.ShowGroups = false;
-            this.lstProfiles.Size = new System.Drawing.Size(179, 473);
+            this.lstProfiles.Size = new System.Drawing.Size(239, 582);
             this.lstProfiles.SmallImageList = this.imlProfiles;
             this.lstProfiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lstProfiles.TabIndex = 19;
@@ -356,10 +378,11 @@ namespace WireSockUI.Forms
             this.pnlRight.Controls.Add(this.gbxState);
             this.pnlRight.Controls.Add(this.gbxPeer);
             this.pnlRight.Controls.Add(this.gbxInterface);
-            this.pnlRight.Location = new System.Drawing.Point(182, 3);
+            this.pnlRight.Location = new System.Drawing.Point(243, 4);
+            this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRight.Name = "pnlRight";
             this.resControls.SetResourceKey(this.pnlRight, null);
-            this.pnlRight.Size = new System.Drawing.Size(408, 445);
+            this.pnlRight.Size = new System.Drawing.Size(544, 548);
             this.pnlRight.TabIndex = 17;
             // 
             // gbxState
@@ -367,10 +390,12 @@ namespace WireSockUI.Forms
             this.gbxState.AutoSize = true;
             this.gbxState.Controls.Add(this.layoutState);
             this.gbxState.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbxState.Location = new System.Drawing.Point(0, 38);
+            this.gbxState.Location = new System.Drawing.Point(0, 46);
+            this.gbxState.Margin = new System.Windows.Forms.Padding(4);
             this.gbxState.Name = "gbxState";
+            this.gbxState.Padding = new System.Windows.Forms.Padding(4);
             this.resControls.SetResourceKey(this.gbxState, "PanelState");
-            this.gbxState.Size = new System.Drawing.Size(408, 19);
+            this.gbxState.Size = new System.Drawing.Size(544, 23);
             this.gbxState.TabIndex = 16;
             this.gbxState.TabStop = false;
             this.gbxState.Text = "State";
@@ -380,13 +405,14 @@ namespace WireSockUI.Forms
             // 
             this.layoutState.AutoSize = true;
             this.layoutState.ColumnCount = 2;
-            this.layoutState.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.layoutState.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 449F));
+            this.layoutState.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.layoutState.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 599F));
             this.layoutState.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutState.Location = new System.Drawing.Point(3, 16);
+            this.layoutState.Location = new System.Drawing.Point(4, 19);
+            this.layoutState.Margin = new System.Windows.Forms.Padding(4);
             this.layoutState.Name = "layoutState";
             this.resControls.SetResourceKey(this.layoutState, null);
-            this.layoutState.Size = new System.Drawing.Size(402, 0);
+            this.layoutState.Size = new System.Drawing.Size(536, 0);
             this.layoutState.TabIndex = 0;
             // 
             // gbxPeer
@@ -394,10 +420,12 @@ namespace WireSockUI.Forms
             this.gbxPeer.AutoSize = true;
             this.gbxPeer.Controls.Add(this.layoutPeer);
             this.gbxPeer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbxPeer.Location = new System.Drawing.Point(0, 19);
+            this.gbxPeer.Location = new System.Drawing.Point(0, 23);
+            this.gbxPeer.Margin = new System.Windows.Forms.Padding(4);
             this.gbxPeer.Name = "gbxPeer";
+            this.gbxPeer.Padding = new System.Windows.Forms.Padding(4);
             this.resControls.SetResourceKey(this.gbxPeer, "PanelPeer");
-            this.gbxPeer.Size = new System.Drawing.Size(408, 19);
+            this.gbxPeer.Size = new System.Drawing.Size(544, 23);
             this.gbxPeer.TabIndex = 15;
             this.gbxPeer.TabStop = false;
             this.gbxPeer.Text = "Peer";
@@ -407,13 +435,14 @@ namespace WireSockUI.Forms
             // 
             this.layoutPeer.AutoSize = true;
             this.layoutPeer.ColumnCount = 2;
-            this.layoutPeer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.layoutPeer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 449F));
+            this.layoutPeer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            this.layoutPeer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 599F));
             this.layoutPeer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutPeer.Location = new System.Drawing.Point(3, 16);
+            this.layoutPeer.Location = new System.Drawing.Point(4, 19);
+            this.layoutPeer.Margin = new System.Windows.Forms.Padding(4);
             this.layoutPeer.Name = "layoutPeer";
             this.resControls.SetResourceKey(this.layoutPeer, null);
-            this.layoutPeer.Size = new System.Drawing.Size(402, 0);
+            this.layoutPeer.Size = new System.Drawing.Size(536, 0);
             this.layoutPeer.TabIndex = 0;
             this.layoutPeer.SizeChanged += new System.EventHandler(this.OnLayoutPanelResize);
             // 
@@ -423,9 +452,11 @@ namespace WireSockUI.Forms
             this.gbxInterface.Controls.Add(this.layoutInterface);
             this.gbxInterface.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbxInterface.Location = new System.Drawing.Point(0, 0);
+            this.gbxInterface.Margin = new System.Windows.Forms.Padding(4);
             this.gbxInterface.Name = "gbxInterface";
+            this.gbxInterface.Padding = new System.Windows.Forms.Padding(4);
             this.resControls.SetResourceKey(this.gbxInterface, null);
-            this.gbxInterface.Size = new System.Drawing.Size(408, 19);
+            this.gbxInterface.Size = new System.Drawing.Size(544, 23);
             this.gbxInterface.TabIndex = 14;
             this.gbxInterface.TabStop = false;
             this.gbxInterface.Text = "Interface: Warp";
@@ -436,25 +467,27 @@ namespace WireSockUI.Forms
             this.layoutInterface.AutoSize = true;
             this.layoutInterface.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.layoutInterface.ColumnCount = 2;
-            this.layoutInterface.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.layoutInterface.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.layoutInterface.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layoutInterface.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutInterface.Location = new System.Drawing.Point(3, 16);
+            this.layoutInterface.Location = new System.Drawing.Point(4, 19);
+            this.layoutInterface.Margin = new System.Windows.Forms.Padding(4);
             this.layoutInterface.Name = "layoutInterface";
             this.resControls.SetResourceKey(this.layoutInterface, null);
-            this.layoutInterface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutInterface.Size = new System.Drawing.Size(402, 0);
+            this.layoutInterface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.layoutInterface.Size = new System.Drawing.Size(536, 0);
             this.layoutInterface.TabIndex = 25;
             this.layoutInterface.SizeChanged += new System.EventHandler(this.OnLayoutPanelResize);
             // 
             // tabPageLog
             // 
             this.tabPageLog.Controls.Add(this.lstLog);
-            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 25);
+            this.tabPageLog.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageLog.Name = "tabPageLog";
-            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLog.Padding = new System.Windows.Forms.Padding(4);
             this.resControls.SetResourceKey(this.tabPageLog, "TabPageLog");
-            this.tabPageLog.Size = new System.Drawing.Size(593, 469);
+            this.tabPageLog.Size = new System.Drawing.Size(793, 580);
             this.tabPageLog.TabIndex = 1;
             this.tabPageLog.Text = "Log";
             this.tabPageLog.UseVisualStyleBackColor = true;
@@ -468,13 +501,14 @@ namespace WireSockUI.Forms
             this.lstLog.FullRowSelect = true;
             this.lstLog.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lstLog.HideSelection = false;
-            this.lstLog.Location = new System.Drawing.Point(3, 3);
+            this.lstLog.Location = new System.Drawing.Point(4, 4);
+            this.lstLog.Margin = new System.Windows.Forms.Padding(4);
             this.lstLog.MultiSelect = false;
             this.lstLog.Name = "lstLog";
             this.lstLog.OwnerDraw = true;
             this.resControls.SetResourceKey(this.lstLog, null);
             this.lstLog.ShowGroups = false;
-            this.lstLog.Size = new System.Drawing.Size(587, 463);
+            this.lstLog.Size = new System.Drawing.Size(785, 572);
             this.lstLog.TabIndex = 0;
             this.lstLog.UseCompatibleStateImageBehavior = false;
             this.lstLog.View = System.Windows.Forms.View.Details;
@@ -499,15 +533,16 @@ namespace WireSockUI.Forms
             // 
             this.resMenu.ResourceClassName = "WireSockUI.Properties.Resources";
             // 
-            // frmMain
+            // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(601, 495);
+            this.ClientSize = new System.Drawing.Size(801, 609);
             this.Controls.Add(this.tabControl);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(595, 427);
+            this.MinimumSize = new System.Drawing.Size(787, 515);
             this.Name = "FrmMain";
             this.resControls.SetResourceKey(this, "FormMain");
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -575,6 +610,7 @@ namespace WireSockUI.Forms
         private ToolStripMenuItem cmiAddresses;
         private Extensions.ControlTextExtender resControls;
         private Extensions.MenuTextExtender resMenu;
+        private Button btnAntiRKN;
     }
 }
 
