@@ -2,6 +2,12 @@
 
 WireSockUI is an innovative user interface for the [WireSock VPN Client](https://www.wiresock.net), offering a seamless and intuitive control experience directly from the Windows system tray. This project is a transformative evolution of the original [EpexGUI](https://github.com/Epenko1337/EpexGUI), reimagined and rewritten to enhance functionality and user experience.
 
+## AntiRKN
+
+Для того чтобы воспользоваться обходом блокировки выберите тоннель и нажмите кнопку "ANTIRKN", тоннель автоматически запустится и будет работать.
+|
+To use the bypass blocking, select the tunnel and press the "ANTIRKN" button, the tunnel will automatically start and work.
+
 ## Special Acknowledgements
 
 A heartfelt thanks to [robvanoostenrijk](https://github.com/robvanoostenrijk/WireSockUI) for his exceptional dedication and skill in rewriting the original interface of EpexGUI. His contributions have been pivotal in transforming WireSockUI into a more robust, user-friendly, and feature-rich application. Thanks to his efforts, the interface design of WireSockUI now closely aligns with the official [WireGuard for Windows](https://www.wireguard.com/install/#windows-7-81-10-11-2008r2-2012r2-2016-2019-2022) interface, offering an intuitive and familiar user experience.
